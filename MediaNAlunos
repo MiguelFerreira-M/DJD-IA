@@ -1,0 +1,25 @@
+class Program
+    {
+        static void Main(string[] args)
+        {
+            Random r = new Random();
+
+            int nA = r.Next(1,31);
+
+            int[] n = new int[nA];
+
+            int mQ = 0;
+            int mM = -1;
+
+            for(int i = 0; i < nA; i++)
+            {
+                n[i] = r.Next(0, 21);
+
+                if (n[i] >= 15) mQ++;
+                if (n[i] > mM) mM = n[i];
+            }
+
+            Console.WriteLine("Alunos com média entre 15 e 20: " + mQ);
+            Console.WriteLine("Melhor média: "+ mM);
+        }
+    }
