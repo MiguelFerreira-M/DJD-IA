@@ -1,0 +1,67 @@
+static void Main(string[] args)
+        {
+            Random r = new Random();
+            int p1hp = 100;
+            int p2hp = 100;
+            int p1_atk1 = r.Next(1,11);
+            int p1_atk2 = r.Next(1, 11);
+            int p2_atk1 = r.Next(1, 11);
+            int p2_atk2 = r.Next(1, 11);
+            bool p1_block = false;
+            bool p2_block = false;
+            bool round;
+            if (r.Next(0, 2) == 0) round = true;
+            else round = false;
+
+            while (p1hp > 0 && p2hp > 0)
+            {
+                if(round)//p1 round
+                {
+                    switch(r.Next(0,3))
+                    {
+                        case 0:
+                            if (p2_block) p2_block = false;
+                            else p2hp -= p1_atk1;
+                            break;
+                        case 1:
+                            if (p2_block) p2_block = false;
+                            else p2hp -= p1_atk2;
+                            break;
+                        case 2:
+                            p1_block = true;
+                            break;
+                        default:
+                            Console.WriteLine("Error : wrong Move");
+                            break;
+                    }
+                    round = false;
+                }
+                else//p2 round
+                {
+                    switch (r.Next(0, 3))
+                    {
+                        case 0:
+                            if (p1_block) p1_block = false;
+                            else p1hp -= p2_atk1;
+                            break;
+                        case 1:
+                            if (p2_block) p1_block = false;
+                            else p1hp -= p2_atk2;
+                            break;
+                        case 2:
+                            p2_block = true;
+                            break;
+                        default:
+                            Console.WriteLine("Error : wrong Move");
+                            break;
+                    }
+                    round = true;
+                }
+            }
+
+            if(p1hp <= 0) Console.WriteLine("Player 2 Wins");
+            else Console.WriteLine("Player 1 Wins");
+
+            Console.WriteLine("p1: " + p1hp);
+            Console.WriteLine("p2: " + p2hp);
+        }
