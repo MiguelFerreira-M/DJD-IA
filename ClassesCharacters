@@ -1,0 +1,35 @@
+static void Main(string[] args)
+        {
+            Random r = new Random();
+
+            string[] classes = new string[6];
+            classes[0] = "Berserker";
+            classes[1] = "Mage";
+            classes[2] = "Thief";
+            classes[3] = "Knight";
+            classes[4] = "Wizard";
+            classes[5] = "Mercenary";
+            int[] classesN = new int[6];
+
+            string[] characters = new string[20];
+
+            for(int i = 0; i < characters.Length; i++)
+            {
+                int c = r.Next(0, 6);
+                characters[i] = classes[c];
+
+                for (int j = 0; j < classes.Length; j++)
+                {
+                    if (characters[i] == classes[j])
+                    {
+                        classesN[j]++;
+                        break;
+                    }
+                }
+            }
+
+            for (int i = 0; i < classes.Length; i++)
+            {
+                Console.WriteLine(classes[i] + " - " + classesN[i] + "\n");
+            }
+        }
